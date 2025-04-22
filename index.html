@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kërko Dinosaur</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+      background-color: #f4f4f4;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      width: 250px;
+    }
+    img {
+      margin-top: 20px;
+      max-width: 300px;
+      display: none;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Kërko një Dinosaur</h1>
+  <input type="text" id="dinoInput" placeholder="Shkruaj emrin e një dinosauri">
+  <button onclick="searchDino()">Kërko</button>
+
+  <img id="dinoImage" style="display:none; max-width: 300px;">
+
+  
+  <script src="script.js"></script>
+
+</body>
+</html>
