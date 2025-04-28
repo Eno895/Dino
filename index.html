@@ -1,40 +1,193 @@
 <!DOCTYPE html>
-<html lang="sq">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kërko Dinosaur</title>
+  <title>Netflix - Home</title>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 50px;
-      background-color: #f4f4f4;
+      background-color: #141414;
+      color: white;
     }
-    input, button {
+
+    .navbar {
+      background-color: black;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 2rem;
+      color: red;
+      font-weight: bold;
+    }
+
+    .signin-btn {
+      background-color: red;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      color: white;
+    }
+
+    .hero {
+      height: 100vh;
+      background: url('https://assets.nflxext.com/ffe/siteui/vlv3/53e70b5a-0ee2-4ee1-b2f1-0cfb8e8e0793/249b0d32-3ffb-42cc-8b15-14654252558b/AL-en-20240415-popsignuptwoweeks-perspective_alpha_website_medium.jpg') no-repeat center center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 20px 0 20px;
+    }
+
+    .hero-content {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 600px;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .hero h2 {
+      font-size: 1.3rem;
+      margin-bottom: 25px;
+    }
+
+    .hero-form {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .hero-form input {
       padding: 10px;
-      font-size: 16px;
+      border: none;
+      border-radius: 4px;
       width: 250px;
     }
-    img {
-      margin-top: 20px;
-      max-width: 300px;
-      display: none;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+    .hero-form button {
+      padding: 10px 20px;
+      border: none;
+      background-color: red;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .section {
+      margin-top: 100px;
+      padding: 40px 20px;
+    }
+
+    .section h2 {
+      margin-bottom: 20px;
+    }
+
+    .carousel {
+      display: flex;
+      overflow-x: auto;
+      gap: 15px;
+      scroll-behavior: smooth;
+    }
+
+    .carousel img {
+      width: 200px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 8px;
+      transition: transform 0.3s;
+    }
+
+    .carousel img:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      background-color: black;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 50px;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero h2 {
+        font-size: 1rem;
+      }
+      .carousel img {
+        width: 150px;
+        height: 225px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <h1>Kërko një Dinosaur</h1>
-  <input type="text" id="dinoInput" placeholder="Shkruaj emrin e një dinosauri">
-  <button onclick="searchDino()">Kërko</button>
+  <header class="navbar">
+    <div class="logo">NETFLIX</div>
+    <button class="signin-btn">Sign In</button>
+  </header>
 
-  <img id="dinoImage" style="display:none; max-width: 300px;">
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Enjoy unlimited entertainment</h1>
+      <h2>Watch anytime, anywhere. Cancel anytime.</h2>
+      <form class="hero-form">
+        <input type="email" placeholder="Email address" required>
+        <button type="submit">Get Started</button>
+      </form>
+    </div>
+  </section>
 
-  
-  <script src="script.js"></script>
+  <section class="section">
+    <h2>Popular on Netflix</h2>
+    <div class="carousel" id="carousel">
+      <img src="https://m.media-amazon.com/images/I/71niXI3lxlL._AC_SL1200_.jpg" alt="Movie 1">
+      <img src="https://m.media-amazon.com/images/I/91zbi9M+mKL._AC_SL1500_.jpg" alt="Movie 2">
+      <img src="https://m.media-amazon.com/images/I/71c05lTE03L._AC_SY679_.jpg" alt="Movie 3">
+      <img src="https://m.media-amazon.com/images/I/81-349iYbfL._AC_SY679_.jpg" alt="Movie 4">
+      <img src="https://m.media-amazon.com/images/I/81s6DUyQCZL._AC_SY679_.jpg" alt="Movie 5">
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Netflix Clone - Created for Educational Purposes
+  </footer>
+
+  <script>
+    // JavaScript per te levizur carousel me tastet e shigjetave
+    const carousel = document.getElementById('carousel');
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') {
+        carousel.scrollBy({ left: 300, behavior: 'smooth' });
+      } else if (e.key === 'ArrowLeft') {
+        carousel.scrollBy({ left: -300, behavior: 'smooth' });
+      }
+    });
+  </script>
 
 </body>
 </html>
